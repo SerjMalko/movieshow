@@ -1,0 +1,14 @@
+<p>movie-dashboard works!</p>
+
+<form [formGroup]="findForm">
+  <input class="find-movie" formControlName="title" />
+</form>
+
+
+
+<div class="show-list" *ngFor="let item of resultList | async">
+  <div class="show-list-item">
+    <h3>{{item.Title}}</h3>
+    <p>{{item.Year}}</p>
+  </div>
+</div>
