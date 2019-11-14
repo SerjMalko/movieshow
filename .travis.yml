@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - 10.16.0
+dist: trusty
+sudo: false
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm run build --base-href /movieshow/
+  - mv dist/movieshow/index.html dist/movieshow/404.html
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist/movieshow
+  on:
+    branch: master
