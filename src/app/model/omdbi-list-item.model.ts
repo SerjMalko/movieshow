@@ -1,6 +1,4 @@
-
-
-export interface OmdbiListItemModel {
+export class OmdbiListItemModel {
   Poster: string;
   Title: string;
   Type: string;

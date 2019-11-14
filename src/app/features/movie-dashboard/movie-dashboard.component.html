@@ -1,14 +1,84 @@
-<p>movie-dashboard works!</p>
-
-<form [formGroup]="findForm">
-  <input class="find-movie" formControlName="title" />
-</form>
-
-
-
-<div class="show-list" *ngFor="let item of resultList | async">
-  <div class="show-list-item">
-    <h3>{{item.Title}}</h3>
-    <p>{{item.Year}}</p>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="main-heading">{{ 'ams.dashboard.title' | translate }}</h1>
+    </div>
   </div>
+
+  <form [formGroup]="findForm">
+    <div class="search-line">
+      <mat-form-field class="search-line__field">
+        <input [matAutocomplete]="auto"
+               formControlName='title'
+               matInput
+               placeholder="{{ 'ams.dashboard.search-line' | translate }}">
+        <fa-icon icon="search"></fa-icon>
+      </mat-form-field>
+
+      <mat-autocomplete #auto="matAutocomplete"
+                        (optionsScroll)="optionalScrollAction($event)"
+                        [displayWith]="displayFn">
+        <mat-option *ngIf="isLoading" class="is-loading">
+          <mat-spinner diameter="50"></mat-spinner>
+        </mat-option>
+        <ng-container *ngIf="!isLoading">
+          <mat-option *ngFor="let item of resultList" [value]="item">
+            <span>{{ item.Title }}</span>
+            <small> | Year: {{item.Year}}</small>
+          </mat-option>
+        </ng-container>
+      </mat-autocomplete>
+
+      <p class="search-line__message">
+        {{searchResultMessage}}
+      </p>
+
+    </div>
+
+
+  </form>
+
+
+  <div class="show-list">
+    <ng-container *ngFor="let item of resultList">
+      <mat-card class="show-list__item">
+        <mat-card-header>
+          <mat-card-title>
+            {{item.Title}}
+          </mat-card-title>
+          <mat-card-subtitle>
+            {{item.Year}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <div class="show-list__item_pic-wrapper">
+          <img alt="{{item.Title}}"
+               class="show-list__item_pic"
+               mat-card-image
+               src="{{((item.Poster !== 'N/A')?item.Poster : logo)}}">
+
+        </div>
+
+        <mat-card-actions>
+
+          <button (click)="addToBasket(item)" mat-button mat-icon-button=true>
+            <fa-icon icon="plus"></fa-icon>
+          </button>
+          <button [routerLink]="['/movie-dashboard/', item.imdbID]" mat-button>
+            {{'ams.dashboard.item.show-desc' | translate}}
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </div>
+
+  <div class="more-data">
+    <button (click)="nextResultPage()"
+            *ngIf="currentPage < totalCountPage" class="more-data__action"
+            color="primary"
+            mat-button>
+      {{'ams.general.more' | translate}}
+    </button>
+  </div>
+
+
 </div>

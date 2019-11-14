@@ -1,0 +1,66 @@
+@import "styles-variables";
+
+.movie {
+
+  &__title {
+    margin-bottom: $base-indent* 2;
+  }
+
+  &__poster {
+    position: relative;
+    height: $base-indent * 25;
+    width: $base-indent * 15;
+    object-fit: cover;
+
+  }
+
+  &__rating {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    line-height: $base-indent*2.5;
+
+
+    width: $base-indent*2.5;
+    height: $base-indent*2.5;
+    border-radius: $base-indent*1.25;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, .2), 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12);
+    vertical-align: center;
+    text-align: center;
+    display: block;
+    background: white;
+
+    &_data {
+      font-weight: bold;
+    }
+
+    &_total {
+      font-size: small;
+    }
+
+  }
+
+  &__desc {
+
+    &_data {
+
+      tr {
+        height: $base-indent * 2;
+      }
+
+
+      td {
+        padding-right: $base-indent;
+
+        &:first-child {
+          font-weight: bold;
+        }
+      }
+
+    }
+
+  }
+
+
+}
+

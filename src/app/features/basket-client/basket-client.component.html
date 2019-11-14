@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1 class="main-heading">
+        {{ 'ams.basket.title' | translate }}
+      </h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <ng-container *ngIf="baskets$ | async as baskets">
+        <mat-card *ngFor="let item of baskets; trackBy: trackById">
+          <mat-card-header>
+            <img alt="{{item.Title}}" mat-card-avatar src="{{((item.Poster !== 'N/A')?item.Poster : logo)}}">
+            <mat-card-title>{{ item.Title }} {{ item.Year }}</mat-card-title>
+            <mat-card-subtitle>{{ item.Type }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+            <button [routerLink]="['/movie-dashboard/', item.imdbID]"
+                    class="view-action"
+                    mat-button>{{'ams.general.view' | translate}}</button>
+            <button (click)="removeItem(item.imdbID)" mat-button>{{'ams.general.delete' | translate}}</button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-container>
+
+    </div>
+  </div>
+
+
+</div>

@@ -1,0 +1,84 @@
+<div class="container">
+
+  <div *ngIf="currentMovie | async as movie" class="movie">
+    <div class="row">
+      <div class="col">
+        <button (click)="back()" mat-button mat-icon-button=true>
+          <fa-icon icon="arrow-left"></fa-icon>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col">
+        <h1 class="movie__title">
+          {{movie.Title}}
+        </h1>
+      </div>
+      <div class="col">
+        <button (click)="addToBasket(movie)" class="add-item" mat-button mat-icon-button=true>
+          <fa-icon icon="plus"></fa-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <div class="movie__poster">
+          <img alt="{{movie.Title}}" class="" mat-card-image src="{{((movie.Poster !== 'N/A')?movie.Poster : logo)}}">
+          <p class="movie__rating">
+            <span class="movie__rating_data">{{movie.imdbRating}}</span>
+            <span class="movie__rating_total">{{'/10'}}</span>
+          </p>
+        </div>
+
+      </div>
+      <div class="col">
+        <div class="movie__desc">
+          <table class="movie__desc_data">
+            <tbody>
+            <tr>
+              <td>{{"ams.movie.year" | translate}}</td>
+              <td>{{movie.Year}}</td>
+            </tr>
+            <tr>
+              <td>{{"ams.movie.Writer" | translate}}</td>
+              <td>{{movie.Writer}}</td>
+            </tr>
+            <tr>
+              <td>{{"ams.movie.actors" | translate}}</td>
+              <td>{{movie.Actors}}</td>
+            </tr>
+            <tr>
+              <td>{{"ams.movie.country" | translate}}</td>
+              <td>{{movie.Country}}</td>
+            </tr>
+            <tr>
+              <td>{{"ams.movie.released" | translate}}</td>
+              <td>{{movie.Released}}</td>
+            </tr>
+            <tr>
+              <td>{{"ams.movie.director" | translate}}</td>
+              <td>{{movie.Director}}</td>
+            </tr>
+            <tr>
+              <td>{{"ams.movie.genre" | translate}}</td>
+              <td>{{movie.Genre}}</td>
+            </tr>
+            <tr>
+              <td>{{"ams.movie.language" | translate}}</td>
+              <td>{{movie.Language}}</td>
+            </tr>
+            <tr>
+              <td>{{"ams.movie.runtime" | translate}}</td>
+              <td>{{movie.Runtime}}</td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

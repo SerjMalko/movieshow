@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MovieDashboardComponent } from './movie-dashboard.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-
-
+import { SharedModule } from 'src/app/shared/shared.module';
+import { MovieDashboardRouting } from 'src/app/features/movie-dashboard/movie-dashboard.routing';
 
 @NgModule({
   declarations: [MovieDashboardComponent],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule
+    SharedModule,
+    MovieDashboardRouting
   ]
 })
-export class MovieDashboardModule { }
+export class MovieDashboardModule {}

@@ -2,23 +2,31 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import {MovieDashboardModule} from './features/movie-dashboard/movie-dashboard.module';
-import {HttpClientModule} from '@angular/common/http';
-import {RouterModule} from '@angular/router';
-import {AppRoutingModule} from './app.routing';
+import { AppRoutingModule } from './app.routing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { CoreModule } from 'src/app/core/core.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AppRoutingModule,
+    // angular
+    BrowserAnimationsModule,
     BrowserModule,
-    MovieDashboardModule,
-    HttpClientModule,
-    RouterModule
+    RouterModule,
+
+    // core & shared
+    CoreModule,
+    SharedModule,
+
+    // app
+    AppRoutingModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

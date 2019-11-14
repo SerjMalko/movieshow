@@ -1,0 +1,103 @@
+@import "styles-variables";
+
+h1 {
+  margin-bottom: $base-indent*2;
+}
+
+.search-line {
+
+  text-align: center;
+
+  &__field {
+    position: relative;
+    width: $base-indent * 20;
+
+
+    @media (max-width: map-get($grid-breakpoints, sm)) {
+      width: $base-indent * 14;
+    }
+
+
+    input {
+      padding-right: $base-indent;
+    }
+
+    fa-icon {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+}
+
+.show-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: $base-indent;
+  grid-row-gap: $base-indent;
+
+  margin-bottom: $base-indent;
+
+  @media (max-width: map-get($grid-breakpoints, md)) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: map-get($grid-breakpoints, sm)) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  &__item {
+    position: relative;
+
+    mat-card-header {
+      height: $base-indent * 5;
+    }
+
+    overflow: hidden;
+
+    //min-height: $base-indent * 10;
+
+    &_pic-wrapper {
+
+      overflow: hidden;
+      margin: 0 auto 50px auto;
+
+      max-width: 350px;
+      max-height: 500px;
+
+    }
+
+    &_pic {
+      object-fit: cover;
+      transition: all 1s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    mat-card-actions {
+      position: absolute;
+      bottom: $base-indent;
+      width: calc(100% - 20px);
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+  }
+}
+
+.more-data {
+  width: 100%;
+  margin-bottom: $base-indent * 2;
+  text-align: center;
+
+  &__action {
+    width: $base-indent * 10;
+    background: cornflowerblue;
+  }
+
+}

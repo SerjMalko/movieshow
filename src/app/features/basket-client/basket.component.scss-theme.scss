@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+
+
+@mixin ams-basket-component-theme($theme) {
+  $accent: map-get($theme, accent);
+
+  .view-action {
+    color: mat-color($accent, default-contrast);
+    background-color: mat-color($accent);
+  }
+
+  .add-item {
+    color: mat-color($accent, default-contrast);
+    background-color: mat-color($accent);
+  }
+
+}

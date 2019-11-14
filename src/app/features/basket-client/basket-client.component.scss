@@ -1,0 +1,14 @@
+@import "styles-variables";
+
+.main-heading {
+  margin-bottom: $base-indent * 2;
+}
+
+mat-card {
+  margin-bottom: $base-indent;
+  display: flex;
+
+  mat-card-header {
+    flex: 1 0 auto;
+  }
+}
