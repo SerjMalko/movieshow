@@ -1,21 +1,33 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+export function loadMovieDashboard() {
+  return  () => import('./features/movie-dashboard/movie-dashboard.module').then(m => m.MovieDashboardModule);
+}
+
+export function loadMovieItem() {
+  return () => import('./features/movie-item/movie-item.module').then(m => m.MovieItemModule);
+}
+
+export function loadBasket() {
+  return () => import('./features/basket-client/basket-client.module').then(m => m.BasketClientModule);
+}
+
 const routes: Routes = [
   {
     path: '', redirectTo: 'movie-dashboard', pathMatch: 'full'
   },
   {
     path: 'movie-dashboard',
-    loadChildren: () => import('./features/movie-dashboard/movie-dashboard.module').then(m => m.MovieDashboardModule)
+    loadChildren: loadMovieDashboard()
   },
   {
     path: 'movie-dashboard/:id',
-    loadChildren: () => import('./features/movie-item/movie-item.module').then(m => m.MovieItemModule)
+    loadChildren: loadMovieItem()
   },
   {
     path: 'basket-client',
-    loadChildren: () => import('./features/basket-client/basket-client.module').then(m => m.BasketClientModule)
+    loadChildren: loadBasket()
   },
   {
     path: '**', redirectTo: 'movie-dashboard', pathMatch: 'full'
