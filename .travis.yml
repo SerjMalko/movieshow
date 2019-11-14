@@ -16,7 +16,7 @@ install:
   - npm install
 
 script:
-  - npm run build --base-href /movieshow/
+  - npm run build
   - mv dist/movieshow/index.html dist/movieshow/404.html
 
 deploy:
