@@ -2,15 +2,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 export function loadMovieDashboard() {
-  return  () => import('./features/movie-dashboard/movie-dashboard.module').then(m => m.MovieDashboardModule);
+  return  () => import(`./features/movie-dashboard/movie-dashboard.module`).then(m => m.MovieDashboardModule);
 }
 
 export function loadMovieItem() {
-  return () => import('./features/movie-item/movie-item.module').then(m => m.MovieItemModule);
+  return () => import(`./features/movie-item/movie-item.module`).then(m => m.MovieItemModule);
 }
 
 export function loadBasket() {
-  return () => import('./features/basket-client/basket-client.module').then(m => m.BasketClientModule);
+  return () => import(`./features/basket-client/basket-client.module`).then(m => m.BasketClientModule);
 }
 
 const routes: Routes = [
