@@ -65,7 +65,9 @@ export class MatAutoCompleteInfiniteScrollDirective implements OnDestroy {
   }
 
   private removeScrollEventListener() {
-    this.autoComplete.panel.nativeElement
-      .removeEventListener('scroll', this.onScroll);
+    if (this.autoComplete.panel) {
+      this.autoComplete.panel.nativeElement
+        .removeEventListener('scroll', this.onScroll);
+    }
   }
 }
