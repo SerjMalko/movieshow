@@ -1,0 +1,31 @@
+{
+  "ams.title.short": "MovieShow",
+  "ams.title.long": "MovieShow App",
+  "ams.menu.dashboard": "Каталог",
+  "ams.menu.basket": "Корзина",
+  "ams.dashboard.title": "Каталог фильмов",
+  "ams.dashboard.search-line": "Ключевые слова",
+  "ams.dashboard.search-line-desc": "* (минимум 3 знака)",
+  "ams.dashboard.item.show-desc": "Подробнее",
+  "ams.general.more": "Больше",
+  "ams.dashboard.find-result": "Найдено: {{data}} совпадений(-я)",
+  "ams.movie.year": "Год",
+  "ams.movie.Writer": "Режиссер",
+  "ams.movie.actors": "Актеры",
+  "ams.movie.country": "Страна",
+  "ams.movie.released": "Дата релиза",
+  "ams.movie.director": "Директор",
+  "ams.movie.genre": "Жанр",
+  "ams.movie.language": "Язык",
+  "ams.movie.runtime": "Длительность",
+  "ams.basket.title": "Карзина",
+  "ams.dashboard.message.add-to-basket": "{{title}} добавлен в карзину!",
+  "asm.message.movie-exist-in-basket": "{{title}} уже находится в карзине.",
+  "ams.general.view": "Просмотр",
+  "ams.general.delete": "Удалить",
+  "": ""
+}
+
+
+
+
