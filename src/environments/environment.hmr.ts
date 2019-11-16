@@ -7,7 +7,7 @@ export const environment = {
   omdbApiKey: '428ee152',
   defaultLanguage: 'ru',
   production: false,
-  hmr: false
+  hmr: true
 };
 
 /*
