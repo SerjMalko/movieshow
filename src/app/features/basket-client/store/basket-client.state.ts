@@ -49,6 +49,9 @@ export class BasketClientState {
   @Action(AddMovieToBasketAction)
   addMovieToBasket(ctx: StateContext<BasketClientStateModel>, {payload}: { payload: { item: OmdbiListItemModel } }) {
     const data = payload.item;
+
+    console.log('ctx.getState() ->', ctx.getState());
+
     const basketData = [...ctx.getState().saveMoviesList];
     if (data instanceof Array) {
       basketData.push(...data);

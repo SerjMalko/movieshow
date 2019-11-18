@@ -6,7 +6,6 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 import { OmdbiListItemModel } from '../../model/omdbi-list-item.model';
 import { OmdbiListResponseModel } from '../../model/omdbi-list-response.model';
 import { LOGO } from 'src/app/util/const/app.const';
-import { ApplicationSettingService } from 'src/app/core/application-setting/application-setting.service';
 import { Select, Store } from '@ngxs/store';
 import { FindMovieListAction } from 'src/app/features/movie-dashboard/store/movie-dashboard.action';
 import { MovieDashboardState } from 'src/app/features/movie-dashboard/store/movie-dashboard.state';
@@ -34,7 +33,6 @@ export class MovieDashboardComponent implements OnInit, OnDestroy {
   haveMoreItems: Observable<boolean>;
 
   constructor(
-    private appService: ApplicationSettingService,
     private fb: FormBuilder,
     private store: Store
   ) {

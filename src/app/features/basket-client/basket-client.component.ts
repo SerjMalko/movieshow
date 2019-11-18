@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationSettingService } from 'src/app/core/application-setting/application-setting.service';
 import { LOGO } from 'src/app/util/const/app.const';
 import { Observable } from 'rxjs';
 import { OmdbiListItemModel } from 'src/app/model/omdbi-list-item.model';

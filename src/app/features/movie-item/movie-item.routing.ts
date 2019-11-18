@@ -9,7 +9,8 @@ const routes: Routes = [
     component: MovieItemComponent,
     resolve: {
       item: ContactResolve
-    }
+    },
+    data: { title: 'ams.menu.dashboard'}
   }
 ];
 
