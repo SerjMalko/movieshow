@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { OmdbiItemModel } from 'src/app/model/omdbi-item.model';
 import { LOGO } from 'src/app/util/const/app.const';
 import { Location } from '@angular/common';
-import { ApplicationSettingService } from 'src/app/core/application-setting/application-setting.service';
+import { AddMovieToBasketAction } from 'src/app/features/basket-client/store/basket-client.action';
+import { Select, Store } from '@ngxs/store';
+import { MovieItemState } from 'src/app/features/movie-item/store/movie-item.state';
 
 @Component({
   selector: 'app-movie-item',
@@ -14,22 +14,17 @@ import { ApplicationSettingService } from 'src/app/core/application-setting/appl
 })
 export class MovieItemComponent implements OnInit {
 
+  @Select(MovieItemState.movieItem)
   currentMovie: Observable<OmdbiItemModel>;
   logo = LOGO;
 
   constructor(
-    private actRoute: ActivatedRoute,
     private location: Location,
-    private appService: ApplicationSettingService
+    private store: Store
   ) {
   }
 
   ngOnInit() {
-    this.currentMovie = this.actRoute.data.pipe(
-      map(data => {
-        return data.item;
-      })
-    );
   }
 
   back() {
@@ -37,6 +32,6 @@ export class MovieItemComponent implements OnInit {
   }
 
   addToBasket(movie: OmdbiItemModel) {
-    this.appService.addToBasketData(movie);
+    this.store.dispatch(new AddMovieToBasketAction({item: movie}));
   }
 }

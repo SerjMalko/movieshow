@@ -1,7 +1,11 @@
 export const BASKET_LIST = 'BASKET_LIST';
 export const EFFECTIVE_THEME = 'default-theme';
 
-export const LANGUAGE = ['en', 'ru'];
+export const LANGUAGE_DATA = {
+  'RU': 'ru',
+  'EN': 'en'
+};
+export const LANGUAGE = [LANGUAGE_DATA.EN, LANGUAGE_DATA.RU];
 export const MAIN_MENU = [
   {link: 'movie-dashboard', label: 'ams.menu.dashboard'},
   {link: 'basket-client', label: 'ams.menu.basket'}
