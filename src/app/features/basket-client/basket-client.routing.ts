@@ -5,7 +5,8 @@ import { BasketClientComponent } from 'src/app/features/basket-client/basket-cli
 const routes: Routes = [
   {
     path: '',
-    component: BasketClientComponent
+    component: BasketClientComponent,
+    data: { title: 'ams.menu.basket'}
   }
 ];
 

@@ -1,26 +1,18 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
-import { MovieSearchService } from 'src/app/services/movie-search.service';
-import { tap } from 'rxjs/operators';
-import { Location } from '@angular/common';
-import { BOOLEAN_STRING_FALSE } from 'src/app/util/const/app.const';
+import { Store } from '@ngxs/store';
+import { OpenMovieAction } from 'src/app/features/movie-item/store/movie-item.action';
 
 @Injectable({providedIn: 'root'})
 export class ContactResolve implements Resolve<any> {
 
-  constructor(private service: MovieSearchService, private _location: Location) {
+  constructor(private store: Store) {
   }
 
   resolve(route: ActivatedRouteSnapshot) {
-    return this.service
-      .getMovieById(route.paramMap.get('id'))
-      .pipe(
-        tap((data) => {
-          if (data.Response === BOOLEAN_STRING_FALSE) {
-            // TODO Add message about invalid Id
-            this._location.back();
-          }
-        })
-      );
+    console.log('route.paramMap.get(\'id\') ->', route.paramMap.get('id'));
+    return this.store.dispatch(
+      new OpenMovieAction({movieId: route.paramMap.get('id')})
+    );
   }
 }

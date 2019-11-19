@@ -21,8 +21,8 @@
         <mat-option *ngIf="isLoading" class="is-loading">
           <mat-spinner diameter="50"></mat-spinner>
         </mat-option>
-        <ng-container *ngIf="!isLoading">
-          <mat-option *ngFor="let item of resultList" [value]="item">
+        <ng-container *ngIf="!isLoading && movieList | async as movieResultList">
+          <mat-option *ngFor="let item of movieResultList" [value]="item">
             <span>{{ item.Title }}</span>
             <small> | Year: {{item.Year}}</small>
           </mat-option>
@@ -30,7 +30,7 @@
       </mat-autocomplete>
 
       <p class="search-line__message">
-        {{searchResultMessage}}
+        {{searchResultMsg | async}}
       </p>
 
     </div>
@@ -39,8 +39,8 @@
   </form>
 
 
-  <div class="show-list">
-    <ng-container *ngFor="let item of resultList">
+  <div class="show-list" *ngIf="movieList | async as movieResultList">
+    <ng-container *ngFor="let item of movieResultList">
       <mat-card class="show-list__item">
         <mat-card-header>
           <mat-card-title>
@@ -73,7 +73,7 @@
 
   <div class="more-data">
     <button (click)="nextResultPage()"
-            *ngIf="currentPage < totalCountPage" class="more-data__action"
+            *ngIf="haveMoreItems | async" class="more-data__action"
             color="primary"
             mat-button>
       {{'ams.general.more' | translate}}

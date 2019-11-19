@@ -9,7 +9,7 @@
 
   <div class="row">
     <div class="col">
-      <ng-container *ngIf="baskets$ | async as baskets">
+      <ng-container *ngIf="basketList | async as baskets">
         <mat-card *ngFor="let item of baskets; trackBy: trackById">
           <mat-card-header>
             <img alt="{{item.Title}}" mat-card-avatar src="{{((item.Poster !== 'N/A')?item.Poster : logo)}}">

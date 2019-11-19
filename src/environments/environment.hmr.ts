@@ -2,18 +2,12 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const packageJson = require('../../package.json');
-
 export const environment = {
-  appName: 'Movie Show',
   omdbApiKUrl: 'https://www.omdbapi.com',
   omdbApiKey: '428ee152',
   defaultLanguage: 'ru',
   production: false,
-  hmr: false,
-  versions: {
-    app: packageJson.version
-  }
+  hmr: true
 };
 
 /*

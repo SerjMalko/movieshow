@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ApplicationSettingService } from 'src/app/core/application-setting/application-setting.service';
 import { LOGO } from 'src/app/util/const/app.const';
 import { Observable } from 'rxjs';
 import { OmdbiListItemModel } from 'src/app/model/omdbi-list-item.model';
+import { Select, Store } from '@ngxs/store';
+import { BasketClientState } from 'src/app/features/basket-client/store/basket-client.state';
+import { RemoveMovieItemAction } from 'src/app/features/basket-client/store/basket-client.action';
 
 @Component({
   selector: 'app-basket-client',
@@ -11,14 +13,14 @@ import { OmdbiListItemModel } from 'src/app/model/omdbi-list-item.model';
 })
 export class BasketClientComponent implements OnInit {
 
-  baskets$: Observable<Array<OmdbiListItemModel>>;
   logo = LOGO;
+  @Select(BasketClientState.saveMoviesList)
+  basketList: Observable<Array<OmdbiListItemModel>>;
 
-  constructor(private appService: ApplicationSettingService) {
+  constructor(private store: Store) {
   }
 
   ngOnInit() {
-    this.baskets$ = this.appService.getBasketData();
   }
 
   trackById(index: number, movie: OmdbiListItemModel): string {
@@ -26,7 +28,7 @@ export class BasketClientComponent implements OnInit {
   }
 
   removeItem(id: string) {
-    this.appService.removeBasketDataById(id);
+    this.store.dispatch(new RemoveMovieItemAction({id: id}));
   }
 
 }
